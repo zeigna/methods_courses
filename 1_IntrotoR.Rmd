@@ -1,0 +1,218 @@
+---
+title: "R basics"
+author: "Sophia Barrett"
+date: "4/9/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction to R
+
+## Setup
+
+By now, you should have R and Rstudio installed on your local machine (that is, your own computer).  If not follow the steps below:
+
+1. Visit the CRAN R website at https://cran.r-project.org/ and install the version for R that is appropriate for your machine.  
+
+2.  AFTER YOU HAVE INSTALLED R, you need to visit the RStudio downloads page at https://rstudio.com/products/rstudio/download/ and download the FREE Rstudio Desktop.
+
+While you are perfectly able to use R, Rstudio provides a nice user-friendly "face" for the program.  Make sure to watch the video for a introduction to RStudio.
+
+## R basics
+### R as a calculator
+
+First, you can use R as a calculator. So we use `+` for addition:
+```{r}
+2 + 3
+```
+We use `-` for subtraction:
+```{r}
+12-30
+```
+
+We use `*` for multiplication: 
+```{r}
+60*2
+```
+
+We use `/` for division:
+```{r}
+10/3
+```
+We use `**` for exponentiation: 
+```{r}
+10**2
+```
+We can also use `^` for exponents:
+```{r}
+12 ^ 2
+```
+
+We have additional functions for `integer division` and `remainder division`.
+
+Let's say we want to calculate 25 divided by 4:
+```{r}
+25/4
+```
+
+Integer division is just getting the whole number portion of the quotient (the number before the decimal point); in this case, that would be 6.
+
+We use `%/%` for integer division:
+```{r}
+25 %/% 4
+```
+
+Now let's think about the remainder.  4 goes into 25 six times (that is our integer part).  Since 4 times 6 equals 24, we have 1 left over (because 25 - 24 = 1 --> this is our remainder).  We have a remainder of 1 as a result of dividing 25 by 4.
+
+Remainder division is better known as `modulo division` and the remainder is the `modulus`.
+
+We use `%%` for remainder division:
+```{r}
+25 %% 4
+```
+
+Note that R will follow the order of operatons.  So, 
+```{r}
+8 / 2 * (2 + 2)
+```
+This problem always trips up people.  Make sure you understand why 16 is the correct answer.
+
+### Assignment to variable
+
+In the examples above, we had R make a calculation and then result showed directly to screen.  
+
+We can also store the result in a variable for later use.  For example:
+
+```{r}
+x <-  2 + 3
+```
+`<-` is R's assignment operator.  It works like `=` and, while = will work, the practice is to use the assignment operator.
+
+When you run the code, nothing comes to screen.  Why? Becuase we told R to store the value of 2 + 3 in the variable x.  If we want to see what is stored in x, we have to call x by typing its name:
+
+```{r}
+x
+```
+
+We can also use x in equations (like you did in algebra class).
+
+```{r}
+x + 2
+```
+
+```{r}
+x * x
+```
+
+Now is a good time to point out that R is **case sensitive** so x is not the same as X.  If you get an error, the name of the variable is a good starting place.  Check the spelling and check the case.
+
+### Variable types in R
+
+As we can see, we can use numbers to work in R as numbers are part of the `numeric` variable type.  There are two other variable types we will use in this class:  `character` and `logical`.  
+
+As we saw, `numerical variables` are numbers on which we can do mathematical operations.
+
+```{r}
+a <- 2^10 + 6
+```
+```{r}
+a
+```
+
+`Charater variables` are `strings`. Strings are a sequence of letters, numbers, and symbols.  To create a string, use **double quotes**.
+
+```{r}
+message <- "Hello World"
+```
+
+```{r}
+message
+```
+
+`Logical variables` are also called `Boolean variables`.  Logical variables can on two values: TRUE or FALSE.  **Remember that R is case-sensitive so you have to write the words TRUE and FALSE in all capital letters**.  However, you can also write T or F, respectively.
+
+```{r}
+y <-  FALSE
+```
+
+
+```{r}
+y
+```
+
+
+```{r}
+renter <- T
+```
+
+
+```{r}
+renter
+```
+
+For boolean values, FALSE is equivalent to O and TRUE is equivalent to 1.  This make it possible to do Boolean algebra.  For example,
+
+```{r}
+m <- TRUE
+n <- FALSE
+```
+
+Note: we can have more than one command in notebook cell or code chunk.
+
+```{r}
+print(m * 1)
+print(n * 1)
+```
+The `print()` is a built-in R function that allows us to print messages or calcuations to the screen.
+
+For example:
+```{r}
+print("It is a lovely day!")
+```
+
+What you put between the parentheses is called the `argument` or the `parameter`.  In this example, the message to be printed is the argument.  You place string messages in double quotes.  
+
+You can also print numerical or logical values.
+
+```{r}
+print(2 + 3)
+```
+Most times, we will not have to use the print statement, as you have seen in our examples.
+
+One more thing to note, R will **overwrite** your existing variables without a warning.
+
+```{r}
+firstname = "Julie"
+```
+
+
+```{r}
+firstname
+```
+
+
+```{r}
+firstname = "Sophie"
+```
+
+
+```{r}
+firstname
+```
+```{r}
+# Name
+```
+Note the error!  I used 'Name' (capital N), instead of 'name' (lowercase n and the way I actually created the variable).  Remember R is case sensitive so name and Name are different variables.
+
+One final note, we can use a hashtag `#` to `comment out a line`.  This means that anything after the hashtag is ignored by R.  It is a great way to make notes to ourselves about the code.
+
+```{r}
+# This line is a comment and will be 
+#ignored by R
+```
+
+
+
