@@ -1,0 +1,213 @@
+---
+title: "2_Vectors"
+author: "Sophia Barrett"
+date: "4/9/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Vectors
+
+## Data Structure
+A **data structure** is a way of organizing and storing data.  There are different types of data structures in R.  The first one we will look will be **vectors**. 
+
+## Our first data structure: Vectors
+
+Vectors are one of the basic data structures in R.  A vector is a sequence of elements of the same data type (numeric, character, or logical).  Vectors are one-dimensional, meaning they just have a length.
+
+## Getting help
+
+You can get help in R in 3 ways  
+1.  Use the `help()` command  
+2.  Use the question mark  
+3.  Google it!  
+
+From the help command window you can read more about functions.  
+
+```{r}
+help(mean)
+```
+
+```{r}
+?c
+```
+
+## Making functions with `c()`
+`c()` stands for concatenate (or combine).  Using the c() function is the most common way to make vectors of any data type.
+
+Make a vector of values from 1 to 9:
+```{r}
+c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+```
+In the example above, we made a vector but did not save it to a variable for later use.  Let's save it to the variable x.
+
+```{r}
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+```
+
+```{r}
+x
+```
+The elements of a vector are called compents; the vector x is made up of numerical components from 1 to 9.
+
+```{r}
+q <-  c(10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10)
+q
+```
+
+In addition to numeric vectors, we can create character vectors and logical vectors.
+
+```{r}
+months <- c("April", "May", "June", "July", "August")
+months
+```
+
+```{r}
+result <- c(TRUE, FALSE, T, T, T, F, F, FALSE, TRUE)
+result
+```
+### Getting the length of a vector
+To get the length of a vector means to get the number of components in the vector.  We use the `length()` fucntion to determine the length of a vector.
+
+```{r}
+length(x)
+```
+```{r}
+length(months)
+```
+
+
+```{r}
+length(result)
+```
+
+### Coercion Rules
+Remember, all the elements of a vector need to be of the same data type.  If you attempt to make a vector of different types, R will attempt to **coerce** the variable into a type that matches the rest of the elements.  
+
+We can figure out the date type of a vector by using the `typeof()` function.
+
+```{r}
+test <- c(1, 2, 3)
+typeof(test)
+```
+We see the test variable is a special kind of numeric vector called `double`. Double refers to decimal numbers, real numbers, and floating point values.
+
+In the next example, the variable `mix` is a vector of three elements -- 2 numerical and 1 string.  What type of vector is mix?
+
+```{r}
+mix <- c(1, 2, "3")
+typeof(mix)
+```
+we see that mix is a character vector.  In other words, R coerced (converted) the 1 and the 2 into string values. So it made mix into a character vector.
+```{r}
+mix
+```
+So when there is a mixture of numerical elements and character elements, R will coerce all the elements into strings.
+
+What happens if you have a mixture of numerical elements and logical elements?
+
+```{r}
+hmmm <- c(1, 2, FALSE)
+typeof(hmmm)
+```
+
+```{r}
+hmmm
+```
+
+### Adding elements to an existing vector
+
+```{r}
+d <- c(10, 20, 30)
+d
+```
+
+```{r}
+d <- c(d, 50)
+d
+```
+
+## Using the colon (:) operator to make vectors
+
+We can also create vectors using a colon.  The resulting vector will be a **sequence** of **integers**, another type of number.  
+
+```{r}
+m <-  1:10    #note: no c() function
+m
+```
+```{r}
+typeof(m)
+```
+
+
+```{r}
+n <- 100: 75
+n
+```
+
+
+```{r}
+p <- c(40:50, 100)
+p
+```
+```{r}
+typeof(p)
+```
+
+```{r}
+i <- 5
+j <- 15
+
+z <- i:j
+z
+```
+
+
+```{r}
+y <- j:i
+y
+```
+
+
+```{r}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
