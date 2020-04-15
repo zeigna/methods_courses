@@ -42,16 +42,16 @@ Make a vector of values from 1 to 9:
 ```{r}
 c(1, 2, 3, 4, 5, 6, 7, 8, 9)
 ```
-In the example above, we made a vector but did not save it to a variable for later use.  Let's save it to the variable x.
+In the example above, we made a vector but did not save it to a variable.  If we want to use the vector lator, we should save it to a variable. Let's save it to the variable x.
 
 ```{r}
 x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
 ```
-
+When we save the vector to the variable x, we don't see the output because all we did was to tell R to store the vector.  If we want to see the contents of x, we have to call it by typing its name.
 ```{r}
 x
 ```
-The elements of a vector are called compents; the vector x is made up of numerical components from 1 to 9.
+The elements of a vector are called components; the vector x is made up of numerical components from 1 to 9.
 
 ```{r}
 q <-  c(10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10)
@@ -105,7 +105,7 @@ we see that mix is a character vector.  In other words, R coerced (converted) th
 ```{r}
 mix
 ```
-So when there is a mixture of numerical elements and character elements, R will coerce all the elements into strings.
+So when there is a mixture of numerical elements and character elements, R will **coerce** all the elements into strings.
 
 What happens if you have a mixture of numerical elements and logical elements?
 
@@ -132,7 +132,7 @@ d
 
 ## Using the colon (:) operator to make vectors
 
-We can also create vectors using a colon.  The resulting vector will be a **sequence** of **integers**, another type of number.  
+We can also create vectors using a colon.  The resulting vector will be a **sequence of integers**, another type of number.  
 
 ```{r}
 m <-  1:10    #note: no c() function
@@ -142,13 +142,13 @@ m
 typeof(m)
 ```
 
-
+We can create a sequence of decreasing integers:
 ```{r}
 n <- 100: 75
 n
 ```
 
-
+How would you describe the following output?
 ```{r}
 p <- c(40:50, 100)
 p
@@ -157,6 +157,7 @@ p
 typeof(p)
 ```
 
+We can also use variables in place of actual numbers:
 ```{r}
 i <- 5
 j <- 15
@@ -175,13 +176,36 @@ y
 ```{r}
 ```
 
+Remember the coercion rules?  Coercion is when R decides to change the data types.  You can choose to change the data type as well (if it is possible)
 
+Let's say we have a vector of doubles:
+```{r}
+z <- c(23.00, 52.60, 78, 100)
+z
+```
+```{r}
+typeof(z)
+```
 
+```{r}
+class(z)
+```
 
+We can force R to make the vector z into a vector of integers by using the `as.integer()` function:
+```{r}
+as.integer(z)
+```
 
+If we want to save this vector, we will have to save it to a vector.
+```{r}
+q <- as.integer(z)
+q
+```
 
-
-
+We can also pass a vector of values directly into the `as.integer()` function using the `c()` function:
+```{r}
+as.integer(c(65.25, 96,42.00, 41.77, 55.55))
+```
 
 
 

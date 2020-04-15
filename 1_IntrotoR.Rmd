@@ -214,5 +214,5 @@ One final note, we can use a hashtag `#` to `comment out a line`.  This means th
 #ignored by R
 ```
 
-
+**Remember, R is _case-sensitive_ **
 
