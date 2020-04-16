@@ -159,5 +159,69 @@ q <- sort(m, decreasing = TRUE)
 q
 ```
 
+## Is it numeric?
+
+Sometimes we have to verify that a variable belongs to a certain data type.  Suppose we have the following vectors:
+
+```{r}
+nums <- c(645, 36, 54, 36, 84)
+floats <- c(61.25, 85.00, 64.23)
+directions <- c("north", "south", "east", "west")
+bools <- c(T, F, T, F, F, F, T)
+```
+We can test if a is a _numeric_ with the `is.numeric()` function
+```{r}
+is.numeric(nums)
+```
+The function returns a boolean -- `TRUE` if the condition is met, `FALSE` if the condition is not met.
+
+```{r}
+is.numeric(floats)
+```
+```{r}
+is.numeric(directions)
+```
+```{r}
+is.numeric(bools)
+```
+We also have    
+`is.integer()` to test if the variable is an integer
+`is.boolean()`  
+`is.logical()`  
+`is.character()`  
+
+##Dealing with Dates
+
+R has several ways of dealing with dates and times.  `Date` simply stores a date, while `POSIXct.Date` stores a date and time.  Both objects are represented as the number of days (`Date`) or seconds (`POSIXct`) since January 1, 1970.  
+
+```{r}
+date1 <- as.Date("2002-05-02")
+date1
+```
+```{r}
+class(date1)
+```
+
+
+```{r}
+typeof(date1)
+```
+
+To get the number of days between January 1, 1970 and date1:
+```{r}
+as.numeric(date1)
+```
+
+
+```{r}
+date2 <- as.Date("2020-04-15")
+date2
+```
+
+
+```{r}
+date2 - date1
+```
+
 
 
