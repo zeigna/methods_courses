@@ -109,6 +109,10 @@ x * x
 
 Now is a good time to point out that R is **case sensitive** so x is not the same as X.  If you get an error, the name of the variable is a good starting place.  Check the spelling and check the case.
 
+### Case
+*camelCase*  
+*snake_case*  
+
 ### Variable types in R
 
 As we can see, we can use numbers to work in R as numbers are part of the `numeric` variable type.  There are two other variable types we will use in this class:  `character` and `logical`.  

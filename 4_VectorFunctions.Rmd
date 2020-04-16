@@ -1,0 +1,163 @@
+---
+title: "4_Vectorized_Functions"
+author: "Sophia Barrett"
+date: "4/15/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A **vector** is a one-dimensional array; a collection of items of the same data type.  A **vectorized function** will operate or apply the function to all elements of the vector.  Most of R's functions are vectorized
+
+For example, let's make a vector c:
+```{r}
+x <- c(1, 2, 3, 4, 5)
+x
+```
+If we square x, we are actually squaring each element in vector x
+```{r}
+x**2
+```
+This is the same as writing
+```{r}
+c(1, 2, 3, 4)**2
+```
+
+Adding 2 to x will add 2 to each element in vector x:
+```{r}
+x + 2
+```
+we can multiply each element in vector x by 5 and save it to variable y
+```{r}
+y <- x * 5
+y
+```
+
+```{r}
+z <- x / 100
+z
+```
+
+We can get the **sum** of the elements in a vector.  The elements of vector x are 1, 2, 3, and 4.  So the sum is 1 + 2 + 3 + 4 = 10:
+```{r}
+sum(x)
+```
+We can get the **product** of the elements in vector x (1 * 2 * 3 * 4 = 24)
+```{r}
+prod(x)
+```
+The lowest value (element) in vector x:
+```{r}
+min(x)
+```
+The highest value (element) in vector x:
+```{r}
+max(x)
+```
+We can get the **cumulative sum** for the elements in vector x.   
+1     = 1  
+1 + 2 = 3  
+3 + 3 = 6  
+6 + 4 = 10  
+```{r}
+cumsum(x)
+```
+
+We get the *cumulative product** in a similar fashion.  
+1     = 1  
+1 * 2 = 2  
+2 * 3 = 6  
+6 * 4 = 24  
+```{r}
+cumprod(x)
+```
+We can also combine functions (remember to follow the order of operations)
+```{r}
+sumOfX <- sum(x)
+sumOfX
+```
+
+```{r}
+sumOfXSquared <- sum(x**2)
+sumOfXSquared
+```
+```{r}
+sampleSize = length(x)
+sampleSize
+```
+We can use this in a formula to calculate the sum of squares (SS).  Remember, ${SS}$ = $\sum X^2$-$\left( \frac{\sum X}{n} \right)^2$
+```{r}
+SS = sumOfXSquared - ((sumOfX)**2/sampleSize)
+SS
+```
+
+We can have R calculate the **sample variance** of x
+```{r}
+var(x)
+```
+As well as the sample standard deviation of x
+```{r}
+sd(x)
+```
+We can also use the `sqrt()` to take the square root of the variance, since ${S}$ = $\sqrt{variance}$
+```{r}
+sqrt(var(x))
+```
+We work from the inner-most set of function to the outer-most.  In this case,   
+1.  get the variance of x, `var(x)`  
+2.  then take the square root of the variance with the `sqrt()` function, `sqrt(var(x))`  
+
+
+We can manipulate the variance formula to get the SS from the variance and the degrees of freedom (df):
+```{r}
+var(x) * (sampleSize - 1)
+```
+We already calculated measures of variability.  Let's not forget our measures of central tendency.  Here we find the mean of the x:
+```{r}
+mean(x)
+```
+and the median of x:
+```{r}
+median(x)
+```
+
+Finally, we can use the `summary()` function to get the five-number summary as well as the mean for quantitative data.
+```{r}
+summary(x)
+```
+
+## Sorting Vectors
+
+Let's say we have a vector m.
+```{r}
+m <- c(61, 35, 75, 15, 93, 14, 34, 1, 65)
+m
+```
+We can sort these values using the `sort()` function
+```{r}
+sort(m)
+```
+As you can see, we sort the vector components in ASCENDING order by default.
+
+Check out the documentaion for sort() to see how we can sort values in descending order
+```{r}
+?sort
+```
+According to the documentation, `decreasing = FALSE` is the default. So to sort in decreasing order, we need to change the parameter to read `decreasing = TRUE`.
+```{r}
+sort(m, decreasing = TRUE)
+```
+While we have sorted the values, we have not changed the original vector, m
+```{r}
+m
+```
+If we want to save our sorts, we need to store the sorted values in a new vector
+```{r}
+q <- sort(m, decreasing = TRUE)
+q
+```
+
+
+
