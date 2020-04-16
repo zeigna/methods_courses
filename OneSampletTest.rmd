@@ -1,0 +1,43 @@
+---
+title: "xx_oneSampletTest"
+author: "Sophia Barrett"
+date: "4/15/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# t-Tests
+
+```{r}
+weight <- c(159, 155, 157, 125, 103, 122, 101, 82, 148, 199, 195, 110, 191, 151, 119, 119, 112, 87, 190, 97, 135, 131, 129, 146)
+weight
+```
+
+make the qqplot
+```{r}
+qqnorm(weight)
+qqline(weight)
+```
+
+```{r}
+summary(weight)
+```
+
+
+```{r}
+hist(weight)
+```
+
+```{r}
+hist(weight)
+abline(v = mean(weight), col = "green", lwd = 2)
+abline(v =median(weight), col = "red", lwd = 2)
+```
+
+```{r}
+t.test(weight, mu = 150, alternative = "two.sided", conf.level = 0.95)
+```
+
