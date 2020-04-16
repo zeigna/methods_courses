@@ -1,0 +1,211 @@
+---
+title: "3_More_Vectors"
+author: "Sophia Barrett"
+date: "4/9/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# More Vectors
+
+## The `rep()` function
+
+We have other ways to make vectors.  For example, the `rep()` function allows us to make a vector of repeated values.  Here we will repeat the value of 10 three times:
+```{r}
+rep(10, 3)
+```
+We can also repeat string vectors: 
+```{r}
+rep("abc", 6)
+```
+
+and booleans: 
+```{r}
+rep(T, 10)
+```
+
+### A note about `str()`
+
+We can use the structure function, `str()` to look at the strucure of an object
+```{r}
+m <- rep(45, 10)
+str(m)
+```
+Here we see that m is a numeric vector of 10 elements.  We also see the value of the elements in vector m.
+
+## Vector-wise Replication vs Element-wise Replication
+
+We can also chose to repeat entire vectors or to repeat the elements of a vector.  If we choose to repeat the entire vector, this is called **vector-wise replication**.  In the following example, we will repeat the vector 10 times
+```{r}
+n <- rep(c(20, 30, 40), 10)
+n
+```
+
+or we can choose to repeat each element of the vector with an **element-wise replication**, for example:
+```{r}
+p <- rep(c(20, 30, 40), each = 10)
+p
+```
+By using the `each = ` parameter, we are telling R to repeat each element 10 times in this example. You will see this will come in handy when we look at differences between groups.  For example,
+
+```{r}
+gender = rep(c("Female", "Male"), 5)
+gender
+```
+
+```{r}
+gender2 = rep(c("Female", "Male"), each = 5)
+gender2
+```
+What differences do you note?
+
+### Using `rep()` with the colon
+
+We can also use `rep()` with the colon.  For vector-wise replication
+```{r}
+q <- rep(50:60, 5)
+q
+```
+
+For element-wise replication
+```{r}
+r <- rep(50:60, each = 5)
+r
+```
+
+## Creating sequences of numbers with `seq()`
+
+We can also create sequences of numbers using the sequence function, `seq()`.  To use the seq() function, we need to specify  
+1.  a **start** value  
+2.  a **stop** value  
+3.  a **step**  
+
+We can get help on the seq() by typing `help(seq)` or `?seq` to bring up documentation on the function.
+
+```{r}
+?seq
+```
+
+From the documentation, we can see the default values for the seq():   
+the default starting value is 1(`from = 1`)  
+the default ending value is 1 (`to = 1`)  
+the default step value is 1 (`by = 1`)  
+
+
+```{r}
+seq()
+```
+This is not very useful so let's change the parameters
+
+```{r}
+seq(from = 0, to = 12, by = 2)
+```
+
+
+```{r}
+seq(from = 1, to = 2, by = .10)
+```
+
+We need to be aware of the order of the arguments in R.  We can omit the labels **but** if we do not enter the arguments in the correct order, we will end up with the wrong result.  As such, you have to enter the argument in this exact order -- start, stop, step.
+
+To create a sequence of values that start at 100, end at 1000, and go up in steps of 100, we can do:
+```{r}
+seq(100, 1000, 100)
+```
+
+To create a sequence of values that start at 70, ends at 50, and **decreases** in steps of 5:
+```{r}
+seq(70, 50, -5)
+```
+
+What do we get with the following:
+```{r}
+d <- seq(100, -100, -10)
+d
+```
+
+Instead of telling R the steps it should increase or decrease by, we can tell it how many components we want instead.  In this case, R will then calculate the correct step.
+
+To indicate the number of components, we use the `length = ` argument (we must use this label)
+
+Let's create a sequence of n = 10 numbers between 20 and 60:
+```{r}
+f <- seq(20, 60, length = 10)
+f
+```
+
+We can combine the rep() and the seq() functions in creating vectors:
+```{r}
+d <- rep(seq(1, 5, length = 3), each = 3)
+d
+```
+
+## Creating Vectors of Random Numbers
+
+### Using `sample()` to generate discrete random numbers
+
+We can create a vector of discrete random numbers using the `sample()` function.  To use the sample() function, we need to indicate the population from which we are sampling and the number of values to be generated (i.e. the sample size, n).
+
+Let's generate n = 15 discrete random numbers (integers) from 1 to 100:
+```{r}
+i <- sample(1:100, 15)
+i
+```
+
+If we are starting from 1, we can also use the following code:
+```{r}
+j <- sample(100, 15)
+j
+```
+Note, we get a different sample of n = 15 numbers since we are getting a **random** sample.
+
+
+The population can also be a vector:
+```{r}
+k <- 250: 500   #k is a vector of integers from 250 to 500
+l <- sample(k, 10)  #we will use the sample function to pick 10 random discrete numbers from 250 to 500
+l
+```
+
+Review the random samples made for i, j, and l -- do any of the values repeat?
+
+We should have no repeating values (i.e. we should have each vector being a vector of **unique** values).  This is becuase the samples are made **without replacement** -- if we do not replace the value, we cannot use it again.  
+
+If you look at the documentation for sample(), we see that the `replace = ` parameter is set to FALSE by default.  This means R does sampling without replacement by default
+
+```{r}
+?sample
+```
+If we want to sample with replacement, we have to set the `replace = ` paramter to TRUE.
+
+(We will revisit the idea of sampling with replacement when we get to probability and scores.)
+
+If we want to generate n = 20 random numbers from 1 to 10 using sampling with replacement:
+```{r}
+m <- sample(10, 20, replace = TRUE)
+m
+```
+**NOTE**: by if your n is better than the population you are pulling from, then you MUST use `replace = TRUE` as you will not have enough unique values to make your sample.
+
+
+### Using `rnorm()` to generate normally-distributed random numbers
+
+We can use the `rnorm()` function to generate a vector normally distributed random numbers.  By default, $\mu$ = 0 and standard deviation $\sigma$ = 1.  Using a mean of $\mu$ = 0 and standard deviation $\sigma$ = 1 gives us the standard normal distribution.
+
+The **template** looks like:  rnorm(n, $\mu$, $\sigma$)
+
+To get 100 normally distributed values with a mu of 500 and a sigma of 100
+```{r}
+rnorm(100, 500, 100)
+```
+
+If we want to use the standard normal distrubution, we can omit the $\mu$ and the $\sigma$, and just give n:
+```{r}
+rnorm(100)
+```
+
+
+
