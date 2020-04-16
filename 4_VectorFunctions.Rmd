@@ -223,5 +223,9 @@ date2
 date2 - date1
 ```
 
+```{r}
+(date2 - date1)/365
+```
+
 
 
